@@ -1,0 +1,65 @@
+﻿@model User
+
+@{
+    ViewBag.Title = "User Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+
+        <dd class=@Model.Color>
+            @Model.Name
+        </dd>
+
+        <dt>
+            Gender
+        </dt>
+
+        <dd class=@Model.Color>
+            @Model.Gender
+        </dd>
+
+        <dt>
+            Color
+        </dt>
+
+        <dd class=@Model.Color>
+            @Model.Color
+        </dd>
+
+        <dt>
+            Password
+        </dt>
+
+        <dd class=@Model.Color>
+            @Model.Password
+        </dd>
+
+        <dt>
+            isAdmin
+        </dt>
+
+        <dd class=@Model.Color>
+            @Model.isAdmin
+        </dd>
+    </dl>
+</div>
+@if (ViewBag.SessionRole == 1)
+{
+    <p>
+        <a asp-action="UpdateUser" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="ShowAllUsers">Back to List</a>
+    </p>
+}
+else
+{
+    <p>
+        <a asp-action="ShowAllUsers">Back to List</a>
+    </p>
+}

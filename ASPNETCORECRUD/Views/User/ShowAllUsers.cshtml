@@ -1,0 +1,48 @@
+﻿@model IEnumerable<User>
+
+@{
+    ViewBag.Title = "List of Users";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-striped my-4">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Gender
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class=@item.Color>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Gender
+                </td>
+                @if (ViewBag.SessionRole == 1)
+                {
+                    <td>
+                        <a asp-action="UpdateUser" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="UserDetails" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="DeleteUser" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a asp-action="UserDetails" asp-route-id="@item.Id">Details</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
